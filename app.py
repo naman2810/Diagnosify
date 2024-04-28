@@ -9,8 +9,8 @@ import os
 
 
 
-names=["naman","kapil"]
-username=["naman","kaps"]
+names=["naman","kapil","john"]
+username=["naman","kaps","john"]
 
 file_path = Path(__file__).parent/"hashed_pw.pkl"
 with file_path.open("rb") as file:
@@ -100,7 +100,7 @@ if authentication_status :
     # Title and description
     st.title('Health Prediction')
     
-    authenticator.logout("logout",location="main")
+    authenticator.logout("logout","sidebar")
             
     
     st.sidebar.title(f"Welcome {name}")
