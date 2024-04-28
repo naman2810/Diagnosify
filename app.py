@@ -16,7 +16,7 @@ file_path = Path(__file__).parent/"hashed_pw.pkl"
 with file_path.open("rb") as file:
     password=pickle.load(file)
 
-authenticator=stauth.Authenticate(names,username,password,"med","abc",cookie_expiry_days=2)
+authenticator=stauth.Authenticate(names,username,password,"med","abc")
 
 name,authentication_status,usernames = authenticator.login("Login","main")
 
@@ -102,7 +102,7 @@ if authentication_status :
     st.title('Health Prediction')
 
     authenticator.logout("Logout","sidebar")
-    st.sidebar.title(f"Wlcome {name}")
+    st.sidebar.title(f"Welcome {name}")
     # Sidebar tabs for heart disease and diabetes
     selected_tab = st.sidebar.selectbox('Select prediction type:', ('Heart Disease', 'Diabetes'))
     # Prediction based on selected tab
