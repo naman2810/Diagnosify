@@ -29,7 +29,7 @@ if authentication_status :
     model_path = os.path.join(script_dir, "Heart_Model.sav")
 
     heart_model = pickle.load(open(model_path, 'rb'))
-    
+    liver_model = pickle.load(open("liver.sav", 'rb'))
     diabetes_model = pickle.load(open("Diabetes_Model.sav", 'rb'))
 
     def show_index_page():
@@ -59,7 +59,7 @@ if authentication_status :
         st.markdown('---')
 
         # Heart Disease section
-        st.title('Heart Disease')
+        st.title('Heart Disease 🩺')
         st.image("image/heart.png", use_column_width=True)
         st.header('Overview')
         st.markdown('Heart disease describes a range of conditions that affect your heart. Diseases under the heart disease umbrella include blood vessel diseases, such as coronary artery disease; heart rhythm problems (arrhythmias); and heart defects you\'re born with (congenital heart defects), among others.')
@@ -79,6 +79,54 @@ if authentication_status :
         st.markdown('- Engage in regular physical activity')
         st.markdown('- Avoid smoking and limit alcohol consumption')
         st.markdown('- Manage stress effectively')
+
+        st.markdown('---')
+
+        st.title("Liver Disease Prediction")
+        st.image("image/liver.png", use_column_width=True)
+        st.markdown(
+            "Liver disease refers to any condition that causes liver inflammation or damage, "
+            "which may impair liver function and lead to serious complications. "
+            "Liver disease can be inherited (genetic) or caused by a variety of factors that damage the liver, "
+            "such as viruses and alcohol use. "
+            "Obesity is also associated with liver damage. "
+            "Over time, damage to the liver results in scarring (cirrhosis), "
+            "which can lead to liver failure, a life-threatening condition."
+        )
+
+        st.header("Symptoms of Liver Disease")
+        st.markdown(
+            "- Jaundice (yellowing of the skin and eyes)\n"
+            "- Abdominal pain and swelling\n"
+            "- Swelling in the legs and ankles\n"
+            "- Itchy skin\n"
+            "- Dark urine color\n"
+            "- Pale stool color\n"
+            "- Chronic fatigue\n"
+            "- Nausea or vomiting\n"
+            "- Loss of appetite\n"
+            "- Easy bruising\n"
+            "- Weight loss\n"
+            "- Weakness\n"
+            "- Confusion, disorientation or trouble concentrating"
+        )
+
+        st.header("Prevention of Liver Disease")
+        st.markdown(
+            "- Limit alcohol consumption\n"
+            "- Avoid risky behavior\n"
+            "- Get vaccinated\n"
+            "- Use medications wisely\n"
+            "- Avoid contact with other people's blood and body fluids\n"
+            "- Take care with aerosol sprays\n"
+            "- Protect your skin\n"
+            "- Maintain a healthy weight\n"
+            "- Eat a healthy diet\n"
+            "- Exercise regularly\n"
+            "- Avoid toxins"
+        )
+
+        st.markdown("---")
 
         
         
@@ -123,8 +171,43 @@ if authentication_status :
                                     'ca': [ca],
                                     'thal': [thal_mapping[thal]]})
         return user_inputs
+    def get_liver_user_inputs():
+        st.subheader('Liver Disease - User Input Features')
+        age = st.number_input('Age', min_value=10, max_value=100, value=40)
+        gender = st.radio('Gender', ['Male', 'Female'])
+        total_bilirubin = st.number_input('Total Bilirubin', min_value=0.0, max_value=30.0, value=5.0)
+        direct_bilirubin = st.number_input('Direct Bilirubin', min_value=0.0, max_value=20.0, value=2.0)
+        alkphos_alkaline_phosphotase = st.number_input('Alkphos Alkaline Phosphotase', min_value=0, max_value=2000, value=150)
+        sgpt_alamine_aminotransferase = st.number_input('Sgpt Alamine Aminotransferase', min_value=0, max_value=2000, value=100)
+        sgot_aspartate_aminotransferase = st.number_input('Sgot Aspartate Aminotransferase', min_value=0, max_value=2000, value=100)
+        total_proteins = st.number_input('Total Proteins', min_value=0.0, max_value=10.0, value=6.0)
+        alb_albumin = st.number_input('ALB Albumin', min_value=0.0, max_value=10.0, value=3.0)
+        ag_ratio_albumin_and_globulin_ratio = st.number_input('A/G Ratio Albumin and Globulin Ratio', min_value=0.0, max_value=10.0, value=1.0)
 
+        # Encoding gender
+        gender_mapping = {'Male': 1, 'Female': 0}
+
+        # Create DataFrame with user inputs
+        user_inputs = pd.DataFrame({
+            'Age': [age],
+            'Gender': [gender_mapping[gender]],
+            'Total_Bilirubin': [total_bilirubin],
+            'Direct_Bilirubin': [direct_bilirubin],
+            'Alkaline_Phosphotase': [alkphos_alkaline_phosphotase],
+            'Alamine_Aminotransferase': [sgpt_alamine_aminotransferase],
+            'Aspartate_Aminotransferase': [sgot_aspartate_aminotransferase],
+            'Total_Protiens': [total_proteins],
+            'Albumin': [alb_albumin],
+            'Albumin_and_Globulin_Ratio': [ag_ratio_albumin_and_globulin_ratio]
+        })
+        return user_inputs
     # Function to take user inputs for diabetes prediction
+    def predict_liver_disease(user_inputs):
+            liver_prediction = liver_model.predict(user_inputs)[0]
+            if liver_prediction == 0:
+                st.write('Person does not have liver disease.')
+            else:
+                st.write('Person has high chances of liver disease')
     def get_diabetes_user_inputs():
         st.subheader('Diabetes - User Input Features')
         preg = st.number_input('Pregnancies', min_value=0, max_value=17, value=3)
@@ -145,7 +228,8 @@ if authentication_status :
                                     'BMI': [bmi],
                                     'DiabetesPedigreeFunction': [dpf],
                                     'Age': [age]})
-        return user_inputs
+        return user_inputs        
+
 
     # Title and description
     st.title('Health Prediction')
@@ -155,7 +239,7 @@ if authentication_status :
     
     st.sidebar.title(f"Welcome {name}")
     # Sidebar tabs for heart disease and diabetes
-    selected_tab = st.sidebar.selectbox('Select prediction type:', ('index','Heart Disease', 'Diabetes',))
+    selected_tab = st.sidebar.selectbox('Select prediction type:', ('index','Heart Disease', 'Diabetes',"Liver_disease"))
     # Prediction based on selected tab
     if selected_tab == 'Heart Disease':
         st.header('Heart Disease Prediction')
@@ -177,5 +261,14 @@ if authentication_status :
                 st.write('Person does not have diabetes.')
             else:
                 st.write('Person has high chances of diabetes')
+    elif selected_tab=="Liver_disease":
+        st.header('Liver Disease Prediction')
+        user_input = get_liver_user_inputs()
+        st.write(user_input)
+        if st.button('Predict Liver Disease'):
+            predict_liver_disease(user_input)
+        
+    
+    
     else:
         show_index_page()
