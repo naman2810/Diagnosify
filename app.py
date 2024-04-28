@@ -16,8 +16,7 @@ file_path = Path(__file__).parent/"hashed_pw.pkl"
 with file_path.open("rb") as file:
     password=pickle.load(file)
 
-authenticator=stauth.Authenticate(names,username,password,"med","abc",cookie_expiry_days=1)
-
+authenticator=stauth.Authenticate(names,username,password,"med","abc")
 name,authentication_status,usernames = authenticator.login("Login","main")
 
 if authentication_status ==False:
@@ -101,10 +100,7 @@ if authentication_status :
     # Title and description
     st.title('Health Prediction')
 
-    try:
-        authenticator.logout("Logout","sidebar")
-    except KeyError:
-        st.warning("The logout cookie does not exist.")
+    authenticator.logout("Logout","sidebar")
     st.sidebar.title(f"Welcome {name}")
     # Sidebar tabs for heart disease and diabetes
     selected_tab = st.sidebar.selectbox('Select prediction type:', ('Heart Disease', 'Diabetes'))
