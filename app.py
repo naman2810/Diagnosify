@@ -99,8 +99,10 @@ if authentication_status :
 
     # Title and description
     st.title('Health Prediction')
-
-    authenticator.logout("Logout","sidebar")
+    
+    if authenticator.logout("Logout", "sidebar"):
+            st.stop()  
+    
     st.sidebar.title(f"Welcome {name}")
     # Sidebar tabs for heart disease and diabetes
     selected_tab = st.sidebar.selectbox('Select prediction type:', ('Heart Disease', 'Diabetes'))
