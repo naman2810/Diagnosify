@@ -16,7 +16,7 @@ file_path = Path(__file__).parent/"hashed_pw.pkl"
 with file_path.open("rb") as file:
     password=pickle.load(file)
 
-authenticator=stauth.Authenticate(names,username,password,"med","abc")
+authenticator=stauth.Authenticate(names,username,password,"med","abc",cookie_expiry_days=1)
 
 name,authentication_status,usernames = authenticator.login("Login","main")
 
