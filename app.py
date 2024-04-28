@@ -100,7 +100,7 @@ if authentication_status :
     # Title and description
     st.title('Health Prediction')
     
-    authenticator.logout("logout","sidebar")
+    # authenticator.logout("logout","sidebar")
             
     
     st.sidebar.title(f"Welcome {name}")
