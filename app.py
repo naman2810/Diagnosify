@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 from pathlib import Path
 import streamlit_authenticator as stauth
+import os
 
 
 
@@ -24,7 +25,12 @@ if authentication_status ==False:
 if authentication_status==None:
     st.warning("please enter the credentials")
 if authentication_status :
-    heart_model = pickle.load(open("Heart_Model.sav", 'rb'))
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(script_dir, "Heart_Model.sav")
+
+    heart_model = pickle.load(open(model_path, 'rb'))
+    
     diabetes_model = pickle.load(open("Diabetes_Model.sav", 'rb'))
 
     # Function to take user inputs for heart disease prediction
