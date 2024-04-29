@@ -55,7 +55,7 @@ if authentication_status :
         st.markdown('- Monitor blood glucose levels regularly')
         st.markdown('- Take prescribed medications as directed by healthcare providers')
 
-
+        
         st.markdown('---')
 
         # Heart Disease section
@@ -239,7 +239,7 @@ if authentication_status :
     
     st.sidebar.title(f"Welcome {name}")
     # Sidebar tabs for heart disease and diabetes
-    selected_tab = st.sidebar.selectbox('Select prediction type:', ('index','Heart Disease', 'Diabetes',"Liver_disease"))
+    selected_tab = st.sidebar.selectbox('Select prediction type:', ('Home','Heart Disease', 'Diabetes',"Liver disease"))
     # Prediction based on selected tab
     if selected_tab == 'Heart Disease':
         st.header('Heart Disease Prediction')
