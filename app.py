@@ -261,7 +261,7 @@ if authentication_status :
                 st.write('Person does not have diabetes.')
             else:
                 st.write('Person has high chances of diabetes')
-    elif selected_tab=="Liver_disease":
+    elif selected_tab=="Liver disease":
         st.header('Liver Disease Prediction')
         user_input = get_liver_user_inputs()
         st.write(user_input)
