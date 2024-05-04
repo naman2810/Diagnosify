@@ -50,6 +50,6 @@ pickle: Serialization library for saving and loading trained machine learning mo
 Deployment:
 The application is deployed using Streamlit Sharing. Access the deployed application here to experience personalized health predictions and valuable health insights.
 
-Contact Information:
+### Contact Information:
 For inquiries, feedback,  please reach out to [namanr2810@gmail.com].
 
