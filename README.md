@@ -20,7 +20,8 @@ Logout Functionality: Includes a secure logout feature, allowing users to termin
 
 ### How to Use:
 
-Access the Application: diagnosifyy.streamlit.app
+Access the Application: [Diagnosifyy](https://diagnosifyy.streamlit.app)
+
 
 Authenticate: Log in using credentials to access the application's features securely.(dummy {user: john password: 12345})
 
