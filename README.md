@@ -15,12 +15,18 @@ Logout Functionality: Includes a secure logout feature, allowing users to termin
 
 ### How to Use:
 
-Access the Application: diagnosifyy.streamlit.app
+Access the Application: www.diagnosifyy.streamlit.app
+
 Authenticate: Log in using credentials to access the application's features securely.(dummy {user: john password: 12345})
+
 Select Prediction Type: Choose the health condition you want to predict (heart disease, diabetes, or liver disease) from the intuitive user interface.
+
 Input Health Data: Enter relevant health data into the provided input fields, ensuring accuracy and completeness.
+
 Generate Predictions: Click the "Predict" button to generate predictions based on the entered health data, receiving instant insights into your health status.
+
 Explore Information: Explore informative content and recommendations provided by the application to learn more about managing and preventing various health conditions.
+
 Logout Securely: After using the application, log out securely to protect your privacy and account security.
 
 ### Technologies Used:
