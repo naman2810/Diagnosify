@@ -6,16 +6,21 @@ The Health Prediction Web Application is a comprehensive platform designed to em
 ### Features:
 
 Secure Authentication: Implemented user authentication to ensure secure access to sensitive health data, prioritizing user privacy and data protection.
+
 Multi-condition Prediction: Enables users to predict multiple health conditions within a single platform, providing a holistic view of their health status and potential risks.
 Informative Content Hub: Offers detailed information about each health condition, including symptoms, risk factors, prevention strategies, and management guidelines, empowering users to make informed decisions about their health.
+
 User-friendly Interface: Features an intuitive and interactive interface, allowing users to easily input their health data and interpret prediction results without technical expertise.
+
 Dynamic Prediction Models: Utilizes trained machine learning models to deliver accurate predictions tailored to individual user profiles, enhancing the reliability and relevance of health insights.
+
 Real-time Feedback: Provides immediate feedback on prediction results, enabling users to promptly take preventive measures or seek medical advice if necessary.
+
 Logout Functionality: Includes a secure logout feature, allowing users to terminate their sessions and safeguard their account integrity.
 
 ### How to Use:
 
-Access the Application: www.diagnosifyy.streamlit.app
+Access the Application: diagnosifyy.streamlit.app
 
 Authenticate: Log in using credentials to access the application's features securely.(dummy {user: john password: 12345})
 
@@ -32,10 +37,15 @@ Logout Securely: After using the application, log out securely to protect your p
 ### Technologies Used:
 
 Python: Backend programming language for application logic and machine learning model development.
+
 Streamlit: Web application framework for building interactive and data-driven user interfaces.
+
 Pandas: Data manipulation and analysis library for processing input data.
+
 Scikit-learn: Machine learning library for training and deploying predictive models.
+
 pickle: Serialization library for saving and loading trained machine learning models.
+
 Deployment:
 The application is deployed using Streamlit Sharing. Access the deployed application here to experience personalized health predictions and valuable health insights.
 
